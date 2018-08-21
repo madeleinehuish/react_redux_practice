@@ -32,6 +32,7 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
+    historyApiFallback: true, //this is necessary after v4 with react router
     proxy: {
       "/api": "http://localhost:8080"
     }
