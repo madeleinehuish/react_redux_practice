@@ -13,3 +13,7 @@ ReactDOM.render(
 		<App currentState={store.getState()}/>
 	</Provider>
 	, document.getElementById('root'));
+
+
+//// TODO:
+//keeping todos here for future reference...

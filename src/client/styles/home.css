@@ -190,3 +190,11 @@ div.form-container {
 .truckDiv ul li {
 	text-align:left;
 }
+
+.te:hover {
+	background-color: #f1d2fc;
+}
+
+.te:blur {
+	background-color: #ecf5f3;
+}
