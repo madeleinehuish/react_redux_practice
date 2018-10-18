@@ -10,7 +10,7 @@ import { tableInputFunction } from '../actions/index';
 class Home extends Component {
 	constructor (props) {
 		super(props);
-
+		console.log('props home.js: ', props);
 		this.countAdd = this.countAdd.bind(this);
 		this.countSubtract = this.countSubtract.bind(this);
 		this.handleTableElems = this.handleTableElems.bind(this);

@@ -1,7 +1,14 @@
+import axios from 'axios';
+import _ from 'lodash';
+import store from '../store';
+// import { day, hour, timeCurrent, dayCurrent } from '../../tools/time';
+
 export const INCREASE_COUNT = 'INCREASE_COUNT';
 export const DECREASE_COUNT = 'DECREASE_COUNT';
 export const SEARCH_BAR = 'SEARCH_BAR';
 export const TABLE_INPUT = 'TABLE_INPUT';
+export const TRUCKS_BUTTON = 'TRUCKS_BUTTON';
+export const RECEIVE_TRUCKS = 'RECEIVE_TRUCKS';
 
 export function countButtonFunction(sign) {
 	if(sign==='+') {
@@ -18,6 +25,7 @@ export function countButtonFunction(sign) {
 }
 
 export function searchBarFunction(input) {
+
 	return {
 		type: SEARCH_BAR,
 		payload: input
@@ -29,4 +37,73 @@ export function tableInputFunction(input) {
 		type: TABLE_INPUT,
 		payload: input
 	}
+}
+
+export function updateTrucks(trucks) {
+	return {
+		type: RECEIVE_TRUCKS,
+		payload: trucks
+	}
+}
+
+export function trucksButtonFunction() {
+
+		return {
+			type: TRUCKS_BUTTON,
+			payload: function(dispatch, getState) {
+				const date = new Date();
+				const day = date.getDay();
+				const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+				const hour = date.getHours();
+				let minutes = date.getMinutes();
+				if (minutes < 10) {
+				  minutes = '0' + minutes;
+				}
+				let hour12 = hour;
+				let twelve;
+				if(hour>12) {
+				  hour12 = hour - 12;
+				  twelve = 'PM'
+				} else if (hour===12){
+				  twelve = 'PM';
+				} else twelve = 'AM';
+				const timeCurrent = hour12 + ':' + minutes + twelve;
+				const dayCurrent = days[day];
+
+
+				const baseUrl = 'https://data.sfgov.org/resource/bbb8-hzi6.json';
+				const query = `${baseUrl}?dayorder=${day}`;
+				//////////
+
+				//filter function for determining values between start and end time
+				const filtered = arr => {
+					const filterThis = arr.filter(elem => {
+						const start24 = Number(elem.start24.substr(0,2));
+						const end24 = Number(elem.end24.substr(0,2));
+
+						return start24 <= hour && hour < end24;
+					})
+					return filterThis;
+				}
+
+				return fetch(query)
+											.then(data => {
+												return data.json()
+											})
+											.then(data => {
+												console.log('res: ', data);
+												const truckArray = data;
+												const truckFiltered = filtered(truckArray);
+												const alphabetical = _.sortBy(truckFiltered, ['applicant']);
+												console.log('alphabetical: ', alphabetical);
+												store.dispatch(updateTrucks(alphabetical));
+											})
+			}()
+		 }
+
+
+	// return {
+	// 	type: TRUCKS_BUTTON,
+	// 	payload: alphabetical
+	// }
 }

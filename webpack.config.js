@@ -2,10 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
+
 const outputDirectory = "dist";
 
 module.exports = {
-  entry: "./src/client/index.js",
+  entry: ["babel-polyfill", "./src/client/index.js"], //need babel-polyfill here for es7
   output: {
     path: path.join(__dirname, outputDirectory),
     filename: "bundle.js"
