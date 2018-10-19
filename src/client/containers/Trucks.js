@@ -16,7 +16,7 @@ class Trucks extends Component {
 	 // console.log('props: ', );
 		store.dispatch(trucksButtonFunction());
 		// let trucks = await this.props.trucksButtonFunction();
-		console.log('this.props: ', this.props);
+		// console.log('this.props: ', this.props);
 	}
 
 	render() {
@@ -32,7 +32,20 @@ class Trucks extends Component {
 				<div className="truck-container">
 					<h3>Push button to get list of current food trucks open in San Francisco</h3>
 					<button id="truckButton" onClick={this.handleTruckButton}>Get Trucks</button>
-					<div id="truckDiv">{console.log('truckDiv: ' )}</div>
+					{console.log('trucks: ', this.props.trucks.trucks)}
+					<div id="truckDiv">
+						{this.props.trucks.trucks.length ?
+								this.props.trucks.trucks.map(elem => {
+									return <div key={elem.locationid}>
+														<p>{elem.applicant}</p>
+														<p>{elem.location}</p>
+														<br/>
+												 </div>
+								})
+							 : <div></div>
+						}
+					</div>
+
 				</div>
 			</div>
 		)
@@ -42,7 +55,7 @@ class Trucks extends Component {
 // export default Trucks;
 
 function mapStateToProps(state) {
-	console.log('state: ' ,state);
+	// console.log('state: ' ,state);
 	return state;
 }
 

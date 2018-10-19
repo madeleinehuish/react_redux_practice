@@ -91,11 +91,11 @@ export function trucksButtonFunction() {
 												return data.json()
 											})
 											.then(data => {
-												console.log('res: ', data);
+												// console.log('res: ', data);
 												const truckArray = data;
 												const truckFiltered = filtered(truckArray);
 												const alphabetical = _.sortBy(truckFiltered, ['applicant']);
-												console.log('alphabetical: ', alphabetical);
+												// console.log('alphabetical: ', alphabetical);
 												store.dispatch(updateTrucks(alphabetical));
 											})
 			}()
