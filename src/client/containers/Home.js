@@ -16,9 +16,8 @@ class Home extends Component {
 		this.handleTableElems = this.handleTableElems.bind(this);
 		this.handleClearButton = this.handleClearButton.bind(this);
 		this.tableInput = this.tableInput.bind(this);
-
-		// binding?
 	}
+
 	countAdd () {
 		console.log('add button pushed!!!');
 		this.props.countButtonFunction('+');
@@ -94,26 +93,6 @@ class Home extends Component {
 					<p>count: {this.props.count_button.count}</p>
 					<p>searchString: {this.props.searchString.searchString}</p>
 					<p>tableInputString: {this.props.tableInputString.tableInputString}</p>
-					<br/>
-					<br/>
-			    <pre>
-			      Check out the pre tag.... for 'pre-formatted text'
-
-			      it preserves....
-
-			               spaces      unlike the p tag :)
-
-			    </pre>
-					<p><b>This text is bold</b></p>
-					<p><i>This text is italic</i></p>
-					<p>This is<sub> subscript</sub> and <sup>superscript</sup></p>
-					<p>Check it out <mark>mark</mark> girlfriend...</p>
-					<p>Check it out <strong>strong</strong> girlfriend...</p>
-					<p>Check it out <em>em</em> girlfriend...</p>
-					<p>Check it out <del>del</del> girlfriend...</p>
-					<p>Check it out <ins>ins</ins> girlfriend...</p>
-
-					<small>Small</small>
 				</div>
 			</div>
 		)

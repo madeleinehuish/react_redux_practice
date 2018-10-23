@@ -10,9 +10,9 @@ const ulstyle = {
 	padding:0
 }
 
-const Nav = function(props) {
+const Nav = props => {
 
-	const searchBar = (event) => {
+	const searchBar = event => {
 		console.log('input for searchBar: ', event.target.value);
 		props.searchBarFunction(event.target.value);
 

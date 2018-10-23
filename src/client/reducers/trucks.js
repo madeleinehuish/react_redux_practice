@@ -4,12 +4,9 @@ let initialState = { trucks: ''};
 
 function trucksButtonFunction(state = initialState, action){
   switch (action.type) {
-    // case TRUCKS_BUTTON:
 
     case RECEIVE_TRUCKS:
-      return Object.assign({}, state, {
-        trucks: action.payload
-      });
+      return action.payload;
     default:
       return state;
   }

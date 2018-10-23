@@ -3,9 +3,6 @@ import "../styles/app.css";
 import Home from './Home';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Trucks from './Trucks';
-// import redux from 'redux';
-
-//does this need to be a container??? maybe a component? could even be functional...
 
 import Nav from './Nav';
 

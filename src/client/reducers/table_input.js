@@ -5,7 +5,7 @@ let initialState = { tableInputString: ''};
 function tableInputFunction(state = initialState, action){
   switch (action.type) {
     case TABLE_INPUT:
-      return {tableInputString: action.payload};
+      return action.payload;
     default:
       return state;
   }
