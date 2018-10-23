@@ -27,7 +27,7 @@ const Nav = props => {
 						<ul>
 							<li><Link to="/">home</Link></li>
 							<li><Link to="/trucks">trucks</Link></li>
-							{/* <li><a href="pokemon.html">pokemon</a></li> */}
+							<li><Link to="/pokemon">pokemon</Link></li>
 						</ul>
 					</div>
 			</div>

@@ -3,6 +3,7 @@ import "../styles/app.css";
 import Home from './Home';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Trucks from './Trucks';
+import Pokemon from './Pokemon';
 
 import Nav from './Nav';
 
@@ -29,6 +30,7 @@ export default class App extends Component {
      				<Route path="/" exact component={Home} />
             <Route path="/test1" component={Test1} />
             <Route path="/trucks" component={Trucks} />
+            <Route path="/pokemon" component={Pokemon} />
 
      			</div>
      		</BrowserRouter>

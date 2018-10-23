@@ -9,6 +9,8 @@ export const SEARCH_BAR = 'SEARCH_BAR';
 export const TABLE_INPUT = 'TABLE_INPUT';
 export const TRUCKS_BUTTON = 'TRUCKS_BUTTON';
 export const RECEIVE_TRUCKS = 'RECEIVE_TRUCKS';
+export const POKE_BUTTON = 'POKE_BUTTON';
+export const RECEIVE_POKEMON = 'RECEIVE_POKEMON';
 
 export function countButtonFunction(sign) {
 	if(sign==='+') {
@@ -43,6 +45,13 @@ export function updateTrucks(trucks) {
 	return {
 		type: RECEIVE_TRUCKS,
 		payload: trucks
+	}
+}
+
+export function updatePokemon(pokemon) {
+	return {
+		type: RECEIVE_POKEMON,
+		payload: pokemon
 	}
 }
 
@@ -100,10 +109,27 @@ export function trucksButtonFunction() {
 											})
 			}()
 		 }
+}
 
-
-	// return {
-	// 	type: TRUCKS_BUTTON,
-	// 	payload: alphabetical
-	// }
+export function pokeButtonFunction() {
+	console.log('poke button pushed, awaiting response...');
+	return {
+		type: POKE_BUTTON,
+		payload: function(dispatch, getState) {
+								return fetch('https://pokeapi.co/api/v2/pokemon?limit=90')
+													.then(data => {
+														return data.json();
+													})
+													.then(jsonData => {
+														console.log('poke data: ', jsonData)
+													})
+		}()
+	}
+	// console.log('fetch response: ', json);
+	// pokeDiv.style.display = 'block';
+	// pokeSearch.style.display = 'block';
+	// pokeButton.style.display = 'none';
+	// buttonMessage.style.display = 'none';
+	// defaultPokeData = json.results;
+	// buildPokemonList(defaultPokeData);
 }
