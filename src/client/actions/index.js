@@ -116,13 +116,17 @@ export function pokeButtonFunction() {
 	return {
 		type: POKE_BUTTON,
 		payload: function(dispatch, getState) {
-								return fetch('https://pokeapi.co/api/v2/pokemon?limit=90')
-													.then(data => {
-														return data.json();
+								return axios('https://pokeapi.co/api/v2/pokemon?limit=90')
+													.then(res => {
+														console.log('res: ', res);
+														let data = res;
+														return data;
 													})
 													.then(jsonData => {
 														console.log('poke data: ', jsonData)
 													})
+													.catch(err => console.log(err));
+
 		}()
 	}
 	// console.log('fetch response: ', json);

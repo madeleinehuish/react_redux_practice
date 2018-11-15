@@ -1,6 +1,6 @@
 import { POKE_BUTTON, RECEIVE_POKEMON } from '../actions/index';
 
-let initialState = { trucks: ''};
+let initialState = { pokemon: ''};
 
 function pokeButtonFunction(state = initialState, action){
   switch (action.type) {
